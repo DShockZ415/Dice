@@ -1,6 +1,6 @@
 void setup()
 {
-  size(600,600);
+  size(595,595);
 	noLoop();
 }
 int x;
@@ -13,42 +13,66 @@ void draw()
     for(x=0;x<=600;x+=50)
     {
       Die bob=new Die();
+      bob.roll();
       bob.show();
     }
   }
   
 }
-void mousePressed()
-{
-	redraw();
-}
 class Die //models one single dice cube
 {
-  int numDice;
+  int numRoll;
 	int myX,myY;
 	Die() //constructor
 	{
 		myX=x;
     myY=y;
-    roll();
+    numRoll=((int)(Math.random()*6)+1);
 	}
 	void roll()
-	{
-		numDice=((int)(Math.random()*6)+1);
-	}
+{
+    fill(0);
+    if(numRoll==1)
+    {ellipse(myX+23,myY-23,10,10);
+    }
+    if(numRoll==2)
+    {ellipse(myX+12,myY-23,10,10);
+    ellipse(myX+36,myY-23,10,10);
+    }
+    if(numRoll==3)
+    {ellipse(myX+12,myY-36,10,10);
+    ellipse(myX+23,myY-23,10,10);
+    ellipse(myX+36,myY-12,10,10);
+    }
+    if(numRoll==4)
+    {ellipse(myX+12,myY-12,10,10);
+    ellipse(myX+12,myY-36,10,10);
+    ellipse(myX+36,myY-12,10,10);
+    ellipse(myX+36,myY-36,10,10);
+    }
+    if(numRoll==5)
+    {ellipse(myX+12,myY-12,10,10);
+    ellipse(myX+12,myY-36,10,10);
+    ellipse(myX+36,myY-12,10,10);
+    ellipse(myX+36,myY-36,10,10);
+    ellipse(myX+23,myY-23,10,10);
+    }
+    if(numRoll==6)
+    {ellipse(myX+12,myY-12,10,10);
+    ellipse(myX+12,myY-24,10,10);
+    ellipse(myX+12,myY-36,10,10);
+    ellipse(myX+36,myY-12,10,10);
+    ellipse(myX+36,myY-24,10,10);
+    ellipse(myX+36,myY-36,10,10);
+    }
+}
+
 	void show()
 	{
 		fill((int)((Math.random()*201)+55),(int)((Math.random()*201)+55),(int)((Math.random()*201)+55));
     noStroke();
     beginShape();
-    curveVertex(myX,myY);
-    curveVertex(myX,myY);
-    curveVertex(myX,myY+40);
-    curveVertex(myX+40,myY+40);
-    curveVertex(myX+40,myY);
-    curveVertex(myX,myY);
-    curveVertex(myX,myY);
-    endShape();
+    rect(myX,myY,46,46);
 	}
 }
 
