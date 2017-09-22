@@ -1,23 +1,35 @@
 void setup()
 {
-  size(595,595);
+  size(595,655);
 	noLoop();
 }
 int x;
 int y;
+int sum;
 void draw()
 {
   background(255);
+  sum=0;
   for(y=0;y<=600;y+=50)
   {
     for(x=0;x<=600;x+=50)
     {
       Die bob=new Die();
-      bob.roll();
       bob.show();
+      bob.roll();
+      sum=sum+bob.numRoll;
     }
   }
-  
+  fill(255);
+  rect(655,298,150,50);
+  fill(0);
+  textSize(25);
+  text("T",165,635);
+  text("O",213,635);
+  text("T",265,635);
+  text("A",315,635);
+  text("L  :",366,635);
+  text(sum,400,635);
 }
 class Die //models one single dice cube
 {
